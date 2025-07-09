@@ -1,6 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import gsap from 'gsap';
+import { 
+  SiPython, SiJavascript, SiDjango, SiFlask, SiReact, SiNextdotjs, SiHtml5, SiCss3, SiBootstrap, SiTailwindcss, SiMysql, SiMongodb, SiGit, SiDocker, SiLinux 
+} from 'react-icons/si';
 
 const Skills = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -155,15 +158,29 @@ const Skills = () => {
           <h3 className="text-2xl font-bold text-center mb-8 text-gradient">Tech Stack</h3>
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              'Python', 'JavaScript', 'Django', 'Flask', 'React', 'Next.js', 'HTML5', 'CSS3', 
-              'Bootstrap', 'Tailwind', 'MySQL', 'MongoDB', 'Git', 'Docker', 'Linux'
+              { name: 'Python', icon: <SiPython className="text-[#3776AB]" size={24} /> },
+              { name: 'JavaScript', icon: <SiJavascript className="text-[#F7DF1E]" size={24} /> },
+              { name: 'Django', icon: <SiDjango className="text-[#2CA143]" size={24} /> },
+              { name: 'Flask', icon: <SiFlask className="text-[#000000]" size={24} /> },
+              { name: 'React', icon: <SiReact className="text-[#61DAFB]" size={24} /> },
+              { name: 'Next.js', icon: <SiNextdotjs className="text-[#000000]" size={24} /> },
+              { name: 'HTML5', icon: <SiHtml5 className="text-[#E34F26]" size={24} /> },
+              { name: 'CSS3', icon: <SiCss3 className="text-[#1572B6]" size={24} /> },
+              { name: 'Bootstrap', icon: <SiBootstrap className="text-[#7952B3]" size={24} /> },
+              { name: 'Tailwind', icon: <SiTailwindcss className="text-[#06B6D4]" size={24} /> },
+              { name: 'MySQL', icon: <SiMysql className="text-[#4479A1]" size={24} /> },
+              { name: 'MongoDB', icon: <SiMongodb className="text-[#47A248]" size={24} /> },
+              { name: 'Git', icon: <SiGit className="text-[#F05032]" size={24} /> },
+              { name: 'Docker', icon: <SiDocker className="text-[#2496ED]" size={24} /> },
+              { name: 'Linux', icon: <SiLinux className="text-[#FCC624]" size={24} /> },
             ].map((tech, index) => (
               <div 
-                key={tech}
-                className="bg-muted/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-foreground border border-border/50 hover:border-primary/50 hover:glow transition-all duration-300 cursor-default"
+                key={tech.name}
+                className="flex items-center bg-muted/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-foreground border border-border/50 hover:border-primary/50 hover:glow transition-all duration-300 cursor-default gap-2"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                {tech}
+                {tech.icon}
+                <span>{tech.name}</span>
               </div>
             ))}
           </div>
