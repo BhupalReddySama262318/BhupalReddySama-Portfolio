@@ -4,21 +4,35 @@ import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
-  const fullText = 'Full-Stack Developer';
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const texts = ['Full-Stack Developer', 'Python Developer'];
   
   useEffect(() => {
     let i = 0;
-    const timer = setInterval(() => {
-      if (i < fullText.length) {
-        setDisplayText(fullText.slice(0, i + 1));
+    let isDeleting = false;
+    
+    const typeAndDelete = () => {
+      const currentFullText = texts[currentTextIndex];
+      
+      if (!isDeleting && i <= currentFullText.length) {
+        setDisplayText(currentFullText.slice(0, i));
         i++;
-      } else {
-        clearInterval(timer);
+      } else if (isDeleting && i >= 0) {
+        setDisplayText(currentFullText.slice(0, i));
+        i--;
       }
-    }, 100);
-
+      
+      if (i === currentFullText.length + 1 && !isDeleting) {
+        setTimeout(() => { isDeleting = true; }, 2000);
+      } else if (i === 0 && isDeleting) {
+        isDeleting = false;
+        setCurrentTextIndex((prev) => (prev + 1) % texts.length);
+      }
+    };
+    
+    const timer = setInterval(typeAndDelete, isDeleting ? 50 : 100);
     return () => clearInterval(timer);
-  }, []);
+  }, [currentTextIndex]);
 
   const scrollToContact = () => {
     const element = document.querySelector('#contact');
