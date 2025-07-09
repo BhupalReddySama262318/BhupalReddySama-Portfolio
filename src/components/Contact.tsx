@@ -173,13 +173,15 @@ const Contact = () => {
                   </a>
                 ))}
                 
-                <Button
-                  variant="outline"
-                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                <a
+                  href="https://drive.google.com/file/d/1g-HptypCDybizC_F5IJIoPtowcwsd06N/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 flex items-center px-4 py-2 rounded-md font-semibold"
                 >
                   <Download className="mr-2 h-4 w-4" />
                   Resume
-                </Button>
+                </a>
               </div>
             </div>
           </div>

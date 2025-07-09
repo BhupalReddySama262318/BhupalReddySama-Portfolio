@@ -36,8 +36,8 @@ const Projects = () => {
         "Containerized with Docker",
         "Deployed on Render"
       ],
-      github: "https://github.com/bhupalreddysama262318",
-      demo: "#",
+      github: "https://github.com/BhupalReddySama262318/Movie-Market",
+      demo: "https://movie-market.onrender.com/",
       image: "🎬"
     },
     {
@@ -51,8 +51,8 @@ const Projects = () => {
         "Performance optimized architecture",
         "Modular Flask components"
       ],
-      github: "https://github.com/bhupalreddysama262318",
-      demo: "#",
+      github: "https://github.com/BhupalReddySama262318/tweethub",
+      demo: "https://tweethub-ki95.onrender.com",
       image: "🐦"
     }
   ];

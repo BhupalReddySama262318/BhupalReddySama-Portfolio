@@ -37,7 +37,8 @@ const Skills = () => {
       skills: [
         { name: "Django", level: 85 },
         { name: "Flask", level: 80 },
-        { name: "React", level: 75 }
+        { name: "React", level: 75 },
+        { name: "Next.js", level: 70 }
       ],
       color: "text-green-400"
     },
@@ -73,7 +74,8 @@ const Skills = () => {
       skills: [
         { name: "RESTful APIs", level: 85 },
         { name: "DSA", level: 80 },
-        { name: "Docker Hub", level: 75 }
+        { name: "Docker Hub", level: 75 },
+        { name: "Agile Methodology", level: 80 }
       ],
       color: "text-pink-400"
     }
@@ -131,7 +133,7 @@ const Skills = () => {
           <h3 className="text-2xl font-bold text-center mb-8 text-gradient">Tech Stack</h3>
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              'Python', 'JavaScript', 'Django', 'Flask', 'React', 'HTML5', 'CSS3', 
+              'Python', 'JavaScript', 'Django', 'Flask', 'React', 'Next.js', 'HTML5', 'CSS3', 
               'Bootstrap', 'Tailwind', 'MySQL', 'MongoDB', 'Git', 'Docker', 'Linux'
             ].map((tech, index) => (
               <div 

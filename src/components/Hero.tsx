@@ -57,7 +57,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div className="fade-in">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            Hi, I'm <span className="text-gradient">Bhupal</span>
+            Hi, I'm <span className="text-gradient">Bhupal Reddy Sama</span>
           </h1>
           
           <div className="text-2xl md:text-4xl font-semibold mb-8 h-12">
@@ -81,13 +81,15 @@ const Hero = () => {
               Get In Touch
             </Button>
             
-            <Button 
-              variant="outline" 
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3 text-lg font-semibold transition-all duration-300 glow-hover"
+            <a 
+              href="https://drive.google.com/file/d/1g-HptypCDybizC_F5IJIoPtowcwsd06N/view?usp=sharing" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3 text-lg font-semibold transition-all duration-300 glow-hover flex items-center justify-center"
             >
               <Download className="mr-2 h-5 w-5" />
               Download Resume
-            </Button>
+            </a>
           </div>
 
           <div className="flex justify-center space-x-6 mb-16">
