@@ -1,9 +1,13 @@
 import { useEffect, useRef } from 'react';
 import { Code, Database, Server, Globe } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import gsap from 'gsap';
 
 const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const leftColRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -21,6 +25,24 @@ const About = () => {
     elements?.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    gsap.fromTo(
+      headingRef.current,
+      { y: 60, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
+    );
+    gsap.fromTo(
+      subtitleRef.current,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: 'power3.out' }
+    );
+    gsap.fromTo(
+      leftColRef.current,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, delay: 0.6, ease: 'power3.out' }
+    );
   }, []);
 
   const highlights = [
@@ -50,14 +72,14 @@ const About = () => {
     <section id="about" ref={sectionRef} className="py-20 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-6 reveal">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 ref={headingRef} className="text-4xl md:text-5xl font-bold mb-4">
             About <span className="text-gradient">Me</span>
           </h2>
-          <p className="text-lg text-muted-foreground">Get to know more about my journey and expertise</p>
+          <p ref={subtitleRef} className="text-lg text-muted-foreground">Get to know more about my journey and expertise</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="reveal">
+          <div ref={leftColRef} className="reveal">
             <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gradient">
               Passionate Developer from Hyderabad
             </h3>

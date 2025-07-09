@@ -2,9 +2,13 @@ import { useEffect, useRef } from 'react';
 import { ExternalLink, Github, Play } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import gsap from 'gsap';
 
 const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const viewAllRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -22,6 +26,24 @@ const Projects = () => {
     elements?.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    gsap.fromTo(
+      headingRef.current,
+      { y: 60, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
+    );
+    gsap.fromTo(
+      subtitleRef.current,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: 'power3.out' }
+    );
+    gsap.fromTo(
+      viewAllRef.current,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, delay: 0.6, ease: 'power3.out' }
+    );
   }, []);
 
   const projects = [
@@ -61,10 +83,10 @@ const Projects = () => {
     <section id="projects" ref={sectionRef} className="py-20 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 reveal">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 ref={headingRef} className="text-4xl md:text-5xl font-bold mb-4">
             Featured <span className="text-gradient">Projects</span>
           </h2>
-          <p className="text-lg text-muted-foreground">A showcase of my recent work and technical capabilities</p>
+          <p ref={subtitleRef} className="text-lg text-muted-foreground">A showcase of my recent work and technical capabilities</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
@@ -164,7 +186,7 @@ const Projects = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12 reveal">
+        <div ref={viewAllRef} className="text-center mt-12 reveal">
           <Button 
             variant="outline"
             className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3 text-lg transition-all duration-300 glow-hover"

@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import gsap from 'gsap';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,9 @@ const Contact = () => {
     message: ''
   });
   const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const socialRef = useRef(null);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -32,6 +36,24 @@ const Contact = () => {
     elements?.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    gsap.fromTo(
+      headingRef.current,
+      { y: 60, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
+    );
+    gsap.fromTo(
+      subtitleRef.current,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: 'power3.out' }
+    );
+    gsap.fromTo(
+      socialRef.current,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, delay: 0.6, ease: 'power3.out' }
+    );
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -111,10 +133,10 @@ const Contact = () => {
     <section id="contact" ref={sectionRef} className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 reveal">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 ref={headingRef} className="text-4xl md:text-5xl font-bold mb-4">
             Get In <span className="text-gradient">Touch</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p ref={subtitleRef} className="text-lg text-muted-foreground">
             Let's discuss opportunities and build something amazing together
           </p>
         </div>
@@ -158,7 +180,7 @@ const Contact = () => {
             </div>
 
             {/* Social Links */}
-            <div className="reveal">
+            <div ref={socialRef} className="reveal">
               <h4 className="text-lg font-semibold text-foreground mb-4">Follow Me</h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
@@ -174,7 +196,7 @@ const Contact = () => {
                 ))}
                 
                 <a
-                  href="https://drive.google.com/file/d/1g-HptypCDybizC_F5IJIoPtowcwsd06N/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1BvZqWedn_3sUgMrdT421ZWDP26HRFdw_/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 flex items-center px-4 py-2 rounded-md font-semibold"

@@ -1,9 +1,13 @@
 import { useEffect, useRef } from 'react';
 import { Building, Calendar, Award } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import gsap from 'gsap';
 
 const Experience = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const timelineRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -21,6 +25,24 @@ const Experience = () => {
     elements?.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    gsap.fromTo(
+      headingRef.current,
+      { y: 60, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
+    );
+    gsap.fromTo(
+      subtitleRef.current,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: 'power3.out' }
+    );
+    gsap.fromTo(
+      timelineRef.current,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, delay: 0.6, ease: 'power3.out' }
+    );
   }, []);
 
   const experience = {
@@ -42,10 +64,10 @@ const Experience = () => {
     <section id="experience" ref={sectionRef} className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 reveal">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 ref={headingRef} className="text-4xl md:text-5xl font-bold mb-4">
             Professional <span className="text-gradient">Experience</span>
           </h2>
-          <p className="text-lg text-muted-foreground">My journey in software development</p>
+          <p ref={subtitleRef} className="text-lg text-muted-foreground">My journey in software development</p>
         </div>
 
         <div className="max-w-4xl mx-auto">
@@ -115,7 +137,7 @@ const Experience = () => {
           </Card>
 
           {/* Timeline visualization */}
-          <div className="mt-12 reveal">
+          <div ref={timelineRef} className="mt-12 reveal">
             <div className="relative">
               <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-24 bg-gradient-to-b from-primary to-accent"></div>
               <div className="flex justify-center">

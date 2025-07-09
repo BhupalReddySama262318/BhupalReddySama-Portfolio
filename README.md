@@ -1,5 +1,7 @@
 # Bhupal Reddy Sama - Portfolio
 
+[Live Project ➔](https://bhupal-reddy-sama-portfolio.vercel.app/)
+
 A modern, responsive portfolio website to showcase my skills, projects, certifications, and experience as a software developer.
 
 ## Features

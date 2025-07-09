@@ -1,8 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
+import gsap from 'gsap';
 
 const Skills = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const techStackRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -20,6 +24,24 @@ const Skills = () => {
     elements?.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    gsap.fromTo(
+      headingRef.current,
+      { y: 60, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
+    );
+    gsap.fromTo(
+      subtitleRef.current,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: 'power3.out' }
+    );
+    gsap.fromTo(
+      techStackRef.current,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, delay: 0.6, ease: 'power3.out' }
+    );
   }, []);
 
   const skillCategories = [
@@ -85,10 +107,10 @@ const Skills = () => {
     <section id="skills" ref={sectionRef} className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 reveal">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 ref={headingRef} className="text-4xl md:text-5xl font-bold mb-4">
             Technical <span className="text-gradient">Skills</span>
           </h2>
-          <p className="text-lg text-muted-foreground">Technologies and tools I work with</p>
+          <p ref={subtitleRef} className="text-lg text-muted-foreground">Technologies and tools I work with</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -129,7 +151,7 @@ const Skills = () => {
         </div>
 
         {/* Tech Stack Visual */}
-        <div className="mt-16 reveal">
+        <div ref={techStackRef} className="mt-16 reveal">
           <h3 className="text-2xl font-bold text-center mb-8 text-gradient">Tech Stack</h3>
           <div className="flex flex-wrap justify-center gap-4">
             {[

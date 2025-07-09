@@ -2,9 +2,13 @@ import { useEffect, useRef } from 'react';
 import { Award, ExternalLink, Calendar } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import gsap from 'gsap';
 
 const Certifications = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const statsRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -22,6 +26,24 @@ const Certifications = () => {
     elements?.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    gsap.fromTo(
+      headingRef.current,
+      { y: 60, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
+    );
+    gsap.fromTo(
+      subtitleRef.current,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: 'power3.out' }
+    );
+    gsap.fromTo(
+      statsRef.current,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, delay: 0.6, ease: 'power3.out' }
+    );
   }, []);
 
   const certifications = [
@@ -101,10 +123,10 @@ const Certifications = () => {
     <section id="certifications" ref={sectionRef} className="py-20 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 reveal">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 ref={headingRef} className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-gradient">Certifications</span> & Learning
           </h2>
-          <p className="text-lg text-muted-foreground">Continuous learning and skill development journey</p>
+          <p ref={subtitleRef} className="text-lg text-muted-foreground">Continuous learning and skill development journey</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -167,7 +189,7 @@ const Certifications = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="mt-16 reveal">
+        <div ref={statsRef} className="mt-16 reveal">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="text-4xl font-bold text-gradient mb-2">5+</div>
