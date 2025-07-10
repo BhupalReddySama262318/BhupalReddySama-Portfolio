@@ -63,18 +63,18 @@ const Projects = () => {
       image: "🎬"
     },
     {
-      title: "Tweet Hub",
-      description: "A full-featured microblogging platform built with Flask and SQLite. Includes user authentication, tweet management, and optimized performance through modular Flask components.",
-      technologies: ["Flask", "SQLite", "Python", "HTML/CSS", "Bootstrap"],
+      title: "Social Hub",
+      description: "A full-featured microblogging platform built with React, Express.js, and MongoDB, enabling 100+ users to create and browse multimedia posts (images, videos, text).",
+      technologies: ["React", "Express.js", "MongoDB", "Node.js", "REST API", "JWT Auth", "Cloudinary"],
       features: [
-        "User authentication and sessions",
-        "Tweet creation and browsing",
+        "Secure user authentication and session management",
+        "Post creation and browsing",
         "Security features implementation",
         "Performance optimized architecture",
-        "Modular Flask components"
+        "Deployed full-stack app on Render with cloud-hosted MongoDB"
       ],
-      github: "https://github.com/BhupalReddySama262318/tweethub",
-      demo: "https://tweethub-ki95.onrender.com",
+      github: "https://github.com/BhupalReddySama262318/SocialHub",
+      demo: "https://socialhub-twyy.onrender.com",
       image: "🐦"
     }
   ];
